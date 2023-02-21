@@ -25,8 +25,8 @@ public class StudentService {
 
 
         //If there was a unidirectional mapping : we had to save both of them them
-
-        //But we are super advance and are using bidirectional : Child will automatically be saved
+        //StudentRepo.save () and cardRepo.save()
+        // But we are super advance and are using bidirectional : Child will automatically be saved
 
         studentRepository.save(student);
 
