@@ -1,6 +1,8 @@
 package com.example.Student_Library_Management_System.Models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "book")
@@ -31,6 +33,18 @@ public class Book {
 
 
     private boolean issued;
+
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+    private List<Transaction> listOfTransactions = new ArrayList<>();
+
+
+    public List<Transaction> getListOfTransactions() {
+        return listOfTransactions;
+    }
+
+    public void setListOfTransactions(List<Transaction> listOfTransactions) {
+        this.listOfTransactions = listOfTransactions;
+    }
 
     public Card getCard() {
         return card;

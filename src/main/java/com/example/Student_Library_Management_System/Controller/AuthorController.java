@@ -1,5 +1,6 @@
 package com.example.Student_Library_Management_System.Controller;
 
+import com.example.Student_Library_Management_System.DTOs.AuthorEntryDto;
 import com.example.Student_Library_Management_System.Models.Author;
 import com.example.Student_Library_Management_System.Services.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/author")
+@RequestMapping("author")
 public class AuthorController {
 
     //    / is optional : you want to write you can
@@ -21,8 +22,9 @@ public class AuthorController {
     AuthorService authorService;
 
     @PostMapping("/add")
-    public String addAuthor(@RequestBody Author author){
+    public String addAuthor(@RequestBody AuthorEntryDto authorEntryDto){
 
-        return authorService.createAuthor(author);
+        return authorService.createAuthor(authorEntryDto);
+
     }
 }

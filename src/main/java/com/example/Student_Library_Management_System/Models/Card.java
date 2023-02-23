@@ -42,7 +42,26 @@ public class Card {
 
 
 
+    //Connecting the card class to the transaction
+    //Bidrectional Mapping
+    @OneToMany(mappedBy = "card", cascade = CascadeType.ALL)
+    private List<Transaction> transactionsList = new ArrayList<>();
 
+    public List<Book> getBooksIssued() {
+        return booksIssued;
+    }
+
+    public void setBooksIssued(List<Book> booksIssued) {
+        this.booksIssued = booksIssued;
+    }
+
+    public List<Transaction> getTransactionsList() {
+        return transactionsList;
+    }
+
+    public void setTransactionsList(List<Transaction> transactionsList) {
+        this.transactionsList = transactionsList;
+    }
 
     public Student getStudentVariableName() {
         return studentVariableName;

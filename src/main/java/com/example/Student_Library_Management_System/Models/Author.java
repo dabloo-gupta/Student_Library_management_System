@@ -65,4 +65,7 @@ public class Author {
     public void setBooksWritten(List<Book> booksWritten) {
         this.booksWritten = booksWritten;
     }
+
+    public void setRating(double rating) {
+    }
 }

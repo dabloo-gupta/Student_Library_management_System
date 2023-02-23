@@ -1,5 +1,6 @@
 package com.example.Student_Library_Management_System.Services;
 
+import com.example.Student_Library_Management_System.DTOs.BookRequestDto;
 import com.example.Student_Library_Management_System.Models.Author;
 import com.example.Student_Library_Management_System.Models.Book;
 import com.example.Student_Library_Management_System.Repositories.AuthorRepository;
@@ -16,19 +17,24 @@ public class BookService {
     }
 
 
-    public String addBook(Book book){
+    public String addBook(BookRequestDto bookRequestDto){
 
 
         //I want to get the AuthorEntity ??
-        int authorId = book.getAuthor().getId();
+        int authorId = bookRequestDto.getAuthorId();
 
         //now i willl be fetching the authorEntity
 
         Author author = authorRepository.findById(authorId).get();
 
-        //Home work do exeception handling
+        //We have created this Entity so that we can save it into the DB
+        Book book = new Book();
 
-        //Basic attribute are already set from postman
+        //Basic attrubute are being from Dto to the Entity Layer
+        book.setGenre(bookRequestDto.getGenre());
+        book.setIssued(false);
+        book.setName(bookRequestDto.getName());
+        book.setPages(bookRequestDto.getPages());
 
         //Setting the foreign key attrubuite in the hcild class
         book.setAuthor(author);
